@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ThoughtList = ({ thoughts, title }) => {
   if (!thoughts.length) {
-    return <h3>No Thoughts Yet</h3>;
+    return <h3>No Scores Yet</h3>;
   }
 
   return (
@@ -16,11 +16,11 @@ const ThoughtList = ({ thoughts, title }) => {
               <Link
                 to={`/profile/${thought.username}`}
                 style={{ fontWeight: 700 }}
-                className="text-light"
+                className="text-dark"
               >
                 {thought.username}
               </Link>{' '}
-              thought on {thought.createdAt}
+                &nbsp;scored on {thought.createdAt}
             </p>
             <div className="card-body">
               <Link to={`/thought/${thought._id}`}>

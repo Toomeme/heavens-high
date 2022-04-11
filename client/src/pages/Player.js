@@ -26,7 +26,7 @@ function Player() {
     });
     });*/
 
-    const html = `<iframe id="serviceFrameSend" src="./game/index.html" width="640" height="400"  frameborder="0">
+    const html = `<iframe id="serviceFrameSend" src="./game/index.html" width="640" height="390"  frameborder="0">
 
     `
 

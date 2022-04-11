@@ -28,9 +28,10 @@ const Home = () => {
           ) : (
             <ThoughtList
               thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
+              title="Latest Scores!"
             />
           )}
+          <br/>
         </div>
         {loggedIn && userData ? (
           <div className="col-12 col-lg-3 mb-3">
