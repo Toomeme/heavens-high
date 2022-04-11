@@ -29,9 +29,14 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
+app.use(express.static(path.join(__dirname, '../client/game')));
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+app.get('/play', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/game/index.html'));
 });
 
 db.once('open', () => {
