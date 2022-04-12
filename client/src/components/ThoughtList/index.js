@@ -7,7 +7,7 @@ const ThoughtList = ({ thoughts, title }) => {
   }
 
   return (
-    <div className="mb-3">
+    <div>
       <h3>{title}</h3>
       {thoughts &&
         thoughts.map(thought => (
@@ -24,6 +24,7 @@ const ThoughtList = ({ thoughts, title }) => {
             </p>
             <div className="card-body">
               <Link to={`/thought/${thought._id}`}>
+              <h2>Score:{thought.thoughtImage}</h2>
                 <p>{thought.thoughtText}</p>
                 <p className="mb-0">
                   Reactions: {thought.reactionCount} || Click to{' '}
