@@ -60,8 +60,12 @@ const io = socketio(http)
 io.on('connection', (socket) => {
 
 	socket.on("show_score", (data) => {
-		socket.broadcast.emit("show-score", data);
-    console.log("score"+ data)
+    saved = JSON.stringify(data);
+    regex = /[^a-z :]\ *([.0-9])*\d/g
+    score = saved.match(regex);
+    finalscore = score.toString();
+		socket.broadcast.emit("show-score", finalscore);
+    console.log("score"+ finalscore);
 	});
 })
 });

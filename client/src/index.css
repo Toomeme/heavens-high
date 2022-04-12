@@ -77,7 +77,7 @@ h6 {
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 4.25rem;
 }
 
 h2 {
@@ -288,12 +288,19 @@ width: 10%;
   display: flex;
   justify-content: space-between;
   background-color: var(--light);
-  margin-bottom: 10vh;
-  margin-top: -50px;
-  margin-left: -3vw;
+  margin-bottom: 5vh;
   width: 100vw;
   height:94vh;
   overflow: hidden;
+}
+
+.heroimg{
+  width: 60%;
+  height: 90%;
+  background-image: url('./utils/homebg.png');
+  background-repeat: no-repeat;
+  background-size: 75% 100%;
+  margin-left: 30vw;
 }
 
 .heroborder{

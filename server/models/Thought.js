@@ -9,6 +9,11 @@ const thoughtSchema = new Schema(
       required: 'You need to leave a thought!',
       minlength: 1,
       maxlength: 280
+    },    
+    thoughtImage:{
+      type: String,
+      minlength: 1,
+      maxlength: 280
     },
     createdAt: {
       type: Date,

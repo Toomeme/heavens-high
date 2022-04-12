@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-
+import React, { useState} from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_THOUGHT } from '../../utils/mutations';
 import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { Redirect,useParams } from 'react-router-dom';
 
 const ThoughtForm = () => {
   const [thoughtText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const {image: thoughtImage} = useParams();
 
   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
     update(cache, { data: { addThought } }) {
@@ -30,6 +32,7 @@ const ThoughtForm = () => {
       });
     },
   });
+  
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -42,22 +45,28 @@ const ThoughtForm = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     try {
       await addThought({
-        variables: { thoughtText },
+        variables: {thoughtText,thoughtImage}
       });
-
+      
       // clear form value
       setText('');
       setCharacterCount(0);
+      setFormSubmitted(true);
+  
     } catch (e) {
       console.error(e);
     }
   };
 
+  if (formSubmitted)
+  {
+    return <Redirect push to={`/profile`}/>;
+  }
+
   return (
-    <div>
+    <div data-aos="zoom-in">
       <p
         className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
       >
@@ -69,13 +78,13 @@ const ThoughtForm = () => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Here's a new thought..."
+          placeholder="Write a short comment!"
           value={thoughtText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
         <button className="btn col-12 col-md-3" type="submit">
-          Submit
+         Submit
         </button>
       </form>
     </div>

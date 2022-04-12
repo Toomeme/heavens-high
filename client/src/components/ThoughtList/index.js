@@ -7,7 +7,7 @@ const ThoughtList = ({ thoughts, title }) => {
   }
 
   return (
-    <div>
+    <div className="mb-3">
       <h3>{title}</h3>
       {thoughts &&
         thoughts.map(thought => (
